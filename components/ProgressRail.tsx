@@ -13,7 +13,8 @@ const CHAPTERS = [
   { n: "05", label: "Arrival", p: BEATS.arrival[0] + 0.02 },
   { n: "06", label: "Unload", p: BEATS.destShutter[0] + 0.02 },
   { n: "07", label: "About", p: 1 },
-  { n: "08", label: "Contact", p: 1, target: "#contact" },
+  { n: "08", label: "Leaders", p: 1, target: "#leadership" },
+  { n: "09", label: "Contact", p: 1, target: "#contact" },
 ];
 
 /** Scroll-position-as-time indicator; chapters are jump points in the journey. */

@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import { progress, scroller } from "@/lib/progress";
+import { JOURNEY_VH, scrollToStory, storyToScroll } from "@/lib/warp";
 import { company } from "@/lib/content";
 import Navigation from "./Navigation";
 import Hero from "./Hero";
@@ -19,6 +20,7 @@ import Hud from "./Hud";
 import ProgressRail from "./ProgressRail";
 import FinalCTA from "./FinalCTA";
 import AboutSection from "./AboutSection";
+import Leadership from "./Leadership";
 
 // three.js is client-only and the heaviest chunk: load it after first paint
 const Stage = dynamic(() => import("./three/Stage"), { ssr: false });
@@ -67,12 +69,13 @@ export default function TruckJourney() {
       trigger: track.current,
       start: "top top",
       end: "bottom bottom",
-      onUpdate: (s) => progress.set(s.progress),
-      onRefresh: (s) => progress.set(s.progress),
+      // raw scroll → paced story time (the long drive is compressed)
+      onUpdate: (s) => progress.set(scrollToStory(s.progress)),
+      onRefresh: (s) => progress.set(scrollToStory(s.progress)),
     });
 
     scroller.toProgress = (p: number) => {
-      const y = st.start + (st.end - st.start) * Math.min(1, p);
+      const y = st.start + (st.end - st.start) * storyToScroll(Math.min(1, p));
       const dist = Math.abs(y - window.scrollY);
       if (lenis) lenis.scrollTo(y, { duration: Math.min(4, 1.2 + dist / 6000), easing: (t) => 1 - Math.pow(1 - t, 3) });
       else window.scrollTo({ top: y });
@@ -120,7 +123,7 @@ export default function TruckJourney() {
       <Navigation />
 
       <main>
-        <section ref={track} className="journey" aria-label="The journey of a consignment">
+        <section ref={track} className="journey" style={{ height: `${JOURNEY_VH}vh` }} aria-label="The journey of a consignment">
           <div className="stage">
             <div className="canvas-wrap" aria-hidden>
               {quality && <Stage quality={quality} reduced={reduced} onReady={onReady} />}
@@ -139,6 +142,7 @@ export default function TruckJourney() {
           </div>
         </section>
         <AboutSection />
+        <Leadership />
         <FinalCTA />
       </main>
     </>

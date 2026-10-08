@@ -14,7 +14,7 @@ export default function FinalCTA() {
     <section className="final" id="contact" ref={ref}>
       <div className="final__body">
         <div className="idx mono" style={{ color: "rgba(15,16,18,.6)", marginBottom: 22 }} data-reveal>
-          <b>08</b>
+          <b>09</b>
           <i />
           Contact
         </div>

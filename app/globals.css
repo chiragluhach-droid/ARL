@@ -1104,7 +1104,133 @@ button {
   color: rgba(15, 16, 18, 0.66);
 }
 
-/* ---- 08 Contact ---- */
+/* ---- 08 Leadership ---- */
+.lead {
+  position: relative;
+  z-index: 10;
+  background: var(--paper);
+  color: var(--ink);
+  padding: clamp(72px, 12vh, 140px) var(--gutter) clamp(72px, 12vh, 140px);
+  border-top: 1px solid rgba(15, 16, 18, 0.1);
+}
+.lead__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.7fr);
+  gap: 24px 48px;
+  align-items: end;
+  margin-bottom: clamp(44px, 8vh, 90px);
+}
+.lead__head .idx {
+  grid-column: 1 / -1;
+  color: rgba(15, 16, 18, 0.6);
+}
+.lead__title {
+  font-size: var(--t-h2);
+}
+.lead__intro {
+  margin: 0;
+  max-width: 36ch;
+  justify-self: end;
+  font-size: clamp(17px, 1.3vw, 21px);
+  line-height: 1.5;
+  color: rgba(15, 16, 18, 0.7);
+}
+.lead__portrait {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #ddd8cf;
+  aspect-ratio: 4 / 5;
+}
+.lead__portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease);
+}
+.lead__card:hover .lead__portrait img,
+.lead__founder:hover .lead__portrait img {
+  transform: scale(1.035);
+}
+.lead__badge {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(241, 239, 234, 0.9);
+  color: var(--ink);
+  font-size: 10.5px;
+}
+.lead__founder {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(32px, 6vw, 110px);
+  align-items: center;
+  padding-bottom: clamp(56px, 10vh, 110px);
+  margin-bottom: clamp(48px, 8vh, 90px);
+  border-bottom: 1px solid rgba(15, 16, 18, 0.12);
+}
+.lead__portrait--lg {
+  max-width: 460px;
+}
+.lead__quote {
+  margin: 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(32px, 3.6vw, 58px);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.lead__quote::first-letter {
+  color: var(--signal);
+}
+.lead__founder .lead__bio {
+  margin-top: 26px;
+  max-width: 52ch;
+  font-size: clamp(16px, 1.15vw, 18.5px);
+}
+.lead__name {
+  display: grid;
+  gap: 6px;
+  margin-top: 26px;
+}
+.lead__name strong {
+  font-size: clamp(20px, 1.6vw, 26px);
+  font-weight: 700;
+  font-stretch: 110%;
+  letter-spacing: -0.01em;
+}
+.lead__name .mono {
+  color: var(--signal);
+}
+.lead__name::before {
+  content: "";
+  width: 40px;
+  height: 2px;
+  margin-bottom: 8px;
+  background: var(--signal);
+}
+.lead__bio {
+  margin: 14px 0 0;
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: rgba(15, 16, 18, 0.72);
+}
+.lead__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 3vw, 48px);
+}
+.lead__card .lead__name {
+  margin-top: 22px;
+}
+.lead__swipe {
+  display: none;
+}
+
+/* ---- 09 Contact ---- */
 .final {
   position: relative;
   z-index: 10;
@@ -1378,6 +1504,119 @@ button {
   }
   .about__grid {
     grid-template-columns: 1fr;
+  }
+  /* ---- 08 Leadership on phones: compact founder row + swipeable directors ---- */
+  .lead {
+    padding-top: 64px;
+    padding-bottom: 56px;
+  }
+  .lead__head {
+    grid-template-columns: 1fr;
+    margin-bottom: 28px;
+    gap: 14px;
+  }
+  .lead__title {
+    font-size: 12vw;
+  }
+  .lead__intro {
+    justify-self: start;
+    font-size: 15px;
+  }
+  .lead__founder {
+    grid-template-columns: 118px minmax(0, 1fr);
+    gap: 16px;
+    align-items: start;
+    padding-bottom: 28px;
+    margin-bottom: 28px;
+  }
+  .lead__portrait--lg {
+    max-width: none;
+  }
+  .lead__founder-text {
+    display: flex;
+    flex-direction: column;
+  }
+  .lead__founder .lead__name {
+    order: -1;
+    margin: 0 0 10px;
+  }
+  .lead__quote {
+    font-size: 21px;
+    line-height: 1.15;
+  }
+  .lead__founder .lead__bio {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .lead__name::before {
+    display: none;
+  }
+  .lead__name strong {
+    font-size: 18px;
+  }
+  .lead__name .mono {
+    font-size: 10.5px;
+  }
+  .lead__badge {
+    left: 6px;
+    top: 6px;
+    padding: 4px 7px;
+    font-size: 8.5px;
+  }
+  /* bios stay short: a few lines each */
+  .lead__bio {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .lead__founder .lead__bio {
+    -webkit-line-clamp: 3;
+  }
+  /* directors: one swipeable row instead of a long stack */
+  .lead__grid {
+    display: flex;
+    gap: 14px;
+    margin: 0 calc(-1 * var(--gutter));
+    padding: 0 var(--gutter) 6px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 var(--gutter);
+    scrollbar-width: none;
+  }
+  .lead__grid::-webkit-scrollbar {
+    display: none;
+  }
+  .lead__card {
+    flex: 0 0 74%;
+    scroll-snap-align: start;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 0 rgba(15, 16, 18, 0.06);
+  }
+  .lead__card .lead__portrait {
+    aspect-ratio: 4 / 3;
+    border-radius: 0;
+  }
+  .lead__card .lead__portrait img {
+    object-position: 50% 18%;
+  }
+  .lead__card-text {
+    padding: 14px 16px 18px;
+  }
+  .lead__card .lead__name {
+    margin-top: 0;
+  }
+  .lead__card .lead__bio {
+    margin-top: 8px;
+  }
+  .lead__swipe {
+    display: block !important;
+    margin-top: 14px;
+    color: rgba(15, 16, 18, 0.5);
   }
   .about__since {
     font-size: 17vw;

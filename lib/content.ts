@@ -76,3 +76,40 @@ export const about = {
     { value: "Integrated", label: ["Logistics &", "supply chain solutions"] },
   ],
 };
+
+/**
+ * Leadership — bios from the company's existing website (arlpl.com), trimmed at the last complete
+ * sentence that was available. Paste the full bios here if needed.
+ */
+export const leadership = {
+  founder: {
+    name: "Narain Dass Baweja",
+    role: "Chairman & Managing Director",
+    photo: "/images/team/narain-dass-baweja.webp",
+    quote: "Great dreams of great dreamers are always transcended.",
+    bio: "He is the man of words who laid the foundation of ARL to provide smart logistics solutions pan India — a man of golden heart and strong business ethics.",
+  },
+  directors: [
+    {
+      name: "Rohit Baweja",
+      role: "Director",
+      joined: "2001",
+      photo: "/images/team/rohit-baweja.webp",
+      bio: "Rohit Baweja joined the organisation to extend his support to his father in the journey of success. A man of words, well known for his business strategies — under his guidance, the number of carriers went up from a few to hundreds in a mere span of five years.",
+    },
+    {
+      name: "Litesh Baweja",
+      role: "Director",
+      joined: "2008",
+      photo: "/images/team/litesh-baweja.webp",
+      bio: "Litesh Baweja joined ARL with the aim to expand and diversify the business. A visionary and a go-getter at work, his meticulous and innovative ways of operating across areas have always given ARL a new dimension.",
+    },
+    {
+      name: "Nitish Baweja",
+      role: "Director",
+      joined: null,
+      photo: "/images/team/nitish-baweja.webp",
+      bio: "Young at heart and age, Nitish Baweja drew in fresh air of technical advancement and automation. A data analytics expert and an all-rounder, he automated various processes with ERP at ARL — increasing operational efficiency.",
+    },
+  ],
+};
